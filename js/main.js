@@ -1,81 +1,83 @@
+//HW///
+
+/////////////////////////////////////////////4
+// let arr = [];
+// for (let i = 0; i < 3; i++) {
+
+//     let val = prompt();
 
 
-    let x = 101;
-
-    let firstObject = {
-        'id': 1,
-        'name': 'Anton',
-        'alive': true,
-        'sleeped': null,
-        'coffee': undefined
-    }
-
-    let firstArray = [
-        'first',
-        1,
-        false,
-        null,
-        undefined,
-        firstObject,
-        'qwe',
-        [
-            {
-                'alive': false,
-                'name': 'Bob',
-                'sex': 'trans'
-            }
-        ]
-    ];
-
-    x = 1
+//     if (val === null || val === '') {
+//         alert("canceled")
+//         break;
+//     } else {
+//         arr.push(val);
+//         if (arr.length == 3) {
+//             alert(`your value 1 is ${arr[0]}\nyour value 2 is ${arr[1]}\nyour value 3 is ${arr[2]}`)
+//         }
+//     }
+// }
+// console.log(arr)
 
 
-    if (x === 101) {
-        console.log('work')
-    } else if (x === 1) {
-        console.log('work')
-    } else {
-        console.log('ne work')
-    }
+/////////////////////////////////////////////4
+// let arr = [];
 
-    x === 101 || x === 1 ? console.log('work') : console.log('ne work');
+// for (let i = 1; i > 0; i++) {
 
-    x = 'SOME_GET_REQUEST';
+//     let val = prompt();
 
-    switch (x) {
-        case 'SOME_GET_REQUEST':
-            console.log('SOME_GET_REQUEST');
+//     if (val === null || val === '') {
+//         alert("canceled");
+//     } else {
+//         arr.push(val);
+//         if (arr.length == 3) {
+//             alert(`your value 1 is ${arr[0]}\nyour value 2 is ${arr[1]}\nyour value 3 is ${arr[2]}`);
+//             break;
+//         }
+//     }
+// }
 
-            break;
-        case 'SOME_POST_REQUEST':
-            console.log('SOME_POST_REQUEST');
-
-            break;
-        case 'SOME_DELET_REQUEST':
-            console.log('SOME_DELET_REQUEST');
-
-            break;
-
-        default:
-            console.log('ERROR NO REQUEST');
-
-            break;
-    }
+// console.log(arr)
 
 
-    if (x) {
-        console.log('x work!');
-    }
-
-    let myPerfectArray = [];
+//////////HW//////////////
 
 
-    for (let i = 0; i < 5; i++) {
-        myPerfectArray.push(prompt(`Enter item ${i}`));
-    }
 
-    let j = 0
-    while (j < myPerfectArray.length) {
-        console.log(myPerfectArray[j]);
-        j++
-    }
+// let arr = []
+
+// for (let i = 1; i > 0; i++) {
+
+//     arr.unshift(prompt("Ввведите кодовое слово, пожалуйста!").toLowerCase());
+
+//     if (arr[0] === 'горошинка') {
+//         let name = arr.shift();
+//         alert(`Добро пожаловать принцесса ${name}!`);
+//         console.log(arr);
+//         break;
+//     }
+// }
+
+
+// var myFish = ['angel', 'clown', 'mandarin', 'sturgeon','angel', 'clown', 'mandarin', 'sturgeon','angel', 'clown', 'mandarin', 'sturgeon','angel', 'clown', 'mandarin', 'sturgeon','angel', 'clown', 'mandarin', 'sturgeon',];
+// var removed = myFish.splice(myFish.length/2);
+
+// console.log(myFish);
+// console.log(removed);
+
+// const array1 = ['a', 'b', 'c'];
+// const array2 = ['d', 'e', 'f'];
+
+// console.log(array1, array2);
+// console.log(array1.concat(array2));
+
+
+// let months = 'Янв, Фев, Мар, Апр, Май, Июн, Июл, Авг, Сен ,Окт, Ноя, Дек,';
+
+// let newMonths = months.split('');
+// newMonths.pop()
+
+// var re = /\s*,\s*/;
+// console.log(newMonths.join(''));
+// console.log(newMonths.join('').split(re));
