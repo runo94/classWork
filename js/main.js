@@ -1,28 +1,23 @@
-let h1 = document.getElementsByTagName('h1');
-let element = document.createElement('p');
-element.innerText = 'Hello Test P';
-h1[0].appendChild(element);
+// function createDiv(atrName, atrVal) {
+//     let div = document.createElement('div');
+//     div.setAttribute(atrName, atrVal);
+//     return div;
+// };
 
-h1[0].addEventListener('mouseenter', function () {
-    console.log('The Mouse Entered');
-});
+// let root = document.getElementById('root');
 
+// root.appendChild(createDiv('class', 'first'));
+// root.appendChild(createDiv('class', 'sec'));
 
-let form = document.getElementById('form');
-let someName = null;
-let arr = [];
+function sayHiBye(firstName, lastName) {
 
-console.log(form.getElementsByTagName('input'));
+    function getFullName() {
+        return firstName + " " + lastName;
+    }
 
-function handlerInput(param, index) {
-    arr.push(form.getElementsByTagName('input')[index - 1].value)
+    alert("Hello, " + getFullName());
+    alert("Bye, " + getFullName());
+
 }
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log(arr);
-});
-
-document.getElementById('sel').addEventListener('change',() => {
-    console.log(document.getElementById('sel').value);
-})
+sayHiBye('Anton', 'Kolesnykov')
