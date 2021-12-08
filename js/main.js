@@ -1,49 +1,55 @@
-'use strict';
+// 'use strict';
 
-let calculator = document.getElementById('calculator');
-let buttons = document.querySelectorAll('.number');
-let monitor = document.getElementById('monitor');
-let events = document.querySelectorAll('.events');
+// let animal = {
+//     eats: true
+// };
 
-buttons.forEach((button) => {
-    button.addEventListener('click', onButtonClick);
-});
+// let rabbit = {
+//     jumps: true,
+//     __proto__: animal
+// };
 
-events.forEach((event) => {
-    event.addEventListener('click', onEventClick);
-});
+// let user = {
+//     type: 'human',
+//     breath: true,
+//     camputer: true
+// }
+
+// let moder = {
+//     muteAll: true,
+//     answersQ: true,
+//     __proto__: user
+// }
+
+// let  admin = {
+//     banAll: true,
+//     type: 'superman',
+//     __proto__: moder
+// }
+
+// for (let prop in user) {
+//     let isOwn = user.hasOwnProperty(prop);
+//     if (isOwn) {
+//         alert(`Our: ${prop}`);
+//     } else {
+//         alert(`Inherited: ${prop}`);
+//     }
+// }
+
+// // console.log(admin);
 
 
-function onButtonClick(e) {
-    monitor.value = Number(e.target.innerHTML);
-}
-
-function onEventClick(e) {
-    let val = monitor.value;
-    
-    e.target.id
-}
-
-function suma(a) {
-    return function (b) {
-        return a + b
+function isEmpty(attr) {
+    if(typeof attr === 'object' && !Array.isArray(attr) ) {
+        console.log(Object.keys(attr));
+        return Object.keys(attr).length > 0 
     }
 }
 
-function mult(a) {
-    return function (b) {
-        return a * b
-    }
-}
+let schedule = {};
 
-function calc(func) {
-    return function (a) {
-        return function (b) {
-            return func(a)(b);
-        }
-    }
-}
+alert( isEmpty(schedule) ); // true
 
-console.log(calc(suma)(1)(2));
+schedule["8:30"] = "get up";
 
-
+alert( isEmpty(schedule) ); // false
