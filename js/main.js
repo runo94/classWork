@@ -1,174 +1,86 @@
+'use strict';
 
-// var a = 10;
-// let b = 20;
+// function Calculator() {
+//     this.a;
+//     this.b;
 
-// function pure (x, y) {
-//     return x+y
-// }
-
-// a = 30;
-// console.log(pure(a,b))
-// console.log(notpure());
-
-
-// function notpure() {
-//     return a+b
-// }
-
-// let array = [1,2,3,4,5,6,7,8]
-
-
-// function doubleD(arr) {
-//     return arr.map(n => n * 2)
-// }
-
-// console.log(doubleD([1]));
-
-// Array.prototype.map = function() {
-//   return [3]
-// }
-
-// console.log(doubleD([1]));
-// console.log(doubleD(array));
-
-// function User(name) {
-//     this.name = name;
-//     this.isAdmin = false;
-// }
-
-// let user = new User("Вася");
-// console.log(user);
-
-// function BigUser() {
-//     this.name = "Вася";
-//     return { name: "Godzilla" };
-// }
-
-// console.log(new BigUser().name);
-
-// function SmallUser() {
-//     this.name = "Вася";
-//     return;
-// }
-
-// console.log(new SmallUser().name);
-
-// function User(name) {
-//     this.name = name;
-//     this.sayHi = function () {
-//         alert("Меня зовут: " + this.name);
-//     };
-// }
-// let vasya = new User("Вася");
-
-// vasya.sayHi();
-
-
-// let animal = {
-//     eats: true
-// };
-
-// function Rabbit(name) {
-//     this.name = name;
-// }
-
-// Rabbit.prototype = animal;
-// let rabbit = new Rabbit("White Rabbit");
-// console.log(rabbit);
-
-// let animal = {
-//     eats: true
-// };
-
-// let rabbit = Object.create(animal);
-// console.log(rabbit.eats);
-
-// console.log(Object.getPrototypeOf(rabbit));
-// Object.setPrototypeOf(rabbit, {});
-// console.log(animal);
-
-// class User {
-//     constructor(name, email, password) {
-//         this.name = name;
-//         this.email = email;
-//         this.password = password;
-//     }
-//     sayHi = () => {
-//         const user = {
-//             email: '123@qq.xa'
-//         }
-//         if (this.email === user.email) {
-//             console.log(`Hi, ${this.name} !`);
-//         } else {
-//             console.log(`Who are u!?`)
-//         }
-//     }
-// }
-
-// const userPetya = new User('Petya', 'peya11@qq.xa', '0000');
-// userPetya.sayHi();
-
-// console.log(User.prototype);
-
-// class User {
-//     constructor(name, pw) {
-//         this.name = name;
-//         this.pw = pw;
+//     this.read = () => {
+//         this.a = +prompt('a');
+//         this.b = +prompt('b');
 //     }
 
-//     get name() {
-//         return this._name;
-//     }
-
-//     get pw() {
-//         return this._pw
-//     }
-
-//     set pw(value) {
-//         if(String(value).length < 6) {
-//             console.error('TOOO SHORT!!!!!');
-//             return;
-//         }
-//         this._pw = value;
-//     }
-
-//     set name(value) {
-//         if (value.length < 4) {
-//             alert("Имя слишком короткое.");
-//             return;
-//         }
-//         this._name = value;
-//     }
+//     this.sum = () => this.a + this.b;
+//     this.mult = () => this.a * this.b;
 // }
 
-// let user = new User("Иван", 123);
+// let calculator = new Calculator();
 
-// console.log(user);
+// calculator.read();
 
-// user.name = 'Jora'
-// user.pw = 121234;
-// console.log(user);
+// alert( "Sum=" + calculator.sum() );
+// alert( "Mul=" + calculator.mult() );
 
-let arr = [1, 2, 3, 4, 5]
 
-let res = arr.reduce((acc, curr) => acc + curr, 0);
+// function Accumulator(value) {
 
-console.log(res);
-// 0 + 1
-// 1 + 2
-// 3 + 3
-// 6 + 4
-// 10 + 5
-// 15
+//     this.value = value;
 
-function outer () {
-    let x = 5
-    return function inner() {
-        x++
-        return x;
-    }
-}
+//     this.read = () => this.value += this.value + Number(prompt('???'))
+// }
 
-let a = outer();
+// let accumulator = new Accumulator(1);
 
-console.log(a);
+// accumulator.read();
+// accumulator.read();
+
+// alert(accumulator.value);
+
+// function h(x) {
+//     return x + 1;
+// }
+// // g(x) = x^2
+// // number -> number
+// function g(x) {
+//     return x * x;
+// }
+// // f(x) = convert x to string
+// // number -> string
+// function f(x) {
+//     return x.toString();
+// }
+
+
+// console.log(f(g(h(1))));
+
+// function dot(vector1, vector2) {
+//     return vector1.reduce((sum, element, index) => sum += element * vector2[index], 0);
+// }
+// const v1 = [1, 3, -5];
+// const v2 = [4, -2, -1];
+
+// console.log(dot(v1, v2));
+
+// function curriedDot(vector1) {
+//     return function (vector2) {
+//         return vector1.reduce((sum, element, index) => sum += element * vector2[index], 0);
+//     }
+// }
+// // Taking the dot product of any vector with [1, 1, 1]
+// // is equivalent to summing up the elements of the other vector.
+// const sumElements = curriedDot([1, 1, 1]);
+
+// console.log(sumElements([1, 3, -5])); // -1
+// console.log(sumElements([4, -2, -1])); // 1
+
+
+const giveMe3 = R.curry(function (item1, item2, item3) {
+    return `
+      1: ${item1}
+      2: ${item2}
+      3: ${item3}
+    `;
+});
+const giveMe2 = giveMe3(R.__, R.__, 'French Hens');   // Specify the third argument.
+const giveMe1 = giveMe2('Partridge in a Pear Tree');  // This will go in the first slot.
+const result = giveMe1('Turtle Doves');               // Finally fill in the second argument.
+console.log(result);
