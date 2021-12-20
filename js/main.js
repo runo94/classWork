@@ -1,86 +1,44 @@
 'use strict';
 
-// function Calculator() {
-//     this.a;
-//     this.b;
+const URI = 'http://imtles.noodless.co.ua';
+const PER_PAGE = 5;
 
-//     this.read = () => {
-//         this.a = +prompt('a');
-//         this.b = +prompt('b');
-//     }
+// login: admin
+// pass: itx85A!f^&07SGM!$Z
 
-//     this.sum = () => this.a + this.b;
-//     this.mult = () => this.a * this.b;
-// }
+async function getPosts(page = 1) {
 
-// let calculator = new Calculator();
+  const postsDiv = document.getElementById('posts');
+  postsDiv.innerText = '';
 
-// calculator.read();
+  // запрашиваем JSON постов
+  const posts_response = await fetch(`${URI}` + '/wp-json/wp/v2/posts' + `?per_page=${PER_PAGE}` + `&page=${page}`); // http://imtles.noodless.co.ua/wp-json/wp/v2/posts?per_page=2&page=1
+  const posts_data = await posts_response.json();
 
-// alert( "Sum=" + calculator.sum() );
-// alert( "Mul=" + calculator.mult() );
+  async function getImage(id) {
+    const img_response = await fetch(`${URI}` + '/wp-json/wp/v2/media/' + `${id}`); // http://imtles.noodless.co.ua/wp-json/wp/v2/media/7
+    const img_data = await img_response.json();
 
+    return img_data;
+  }
 
-// function Accumulator(value) {
+  posts_data.map(async (postItem) => {
+    const image = await getImage(postItem.featured_media);
 
-//     this.value = value;
+    const post = document.createElement('div');
+    const postTitle = document.createElement('h2');
+    postTitle.innerHTML = postItem.title.rendered;
+    const postImage = document.createElement('img');
+    postImage.setAttribute('src', `${image.media_details.sizes.thumbnail.source_url}`)
 
-//     this.read = () => this.value += this.value + Number(prompt('???'))
-// }
+    postsDiv.appendChild(post);
+    post.appendChild(postTitle);
+    post.appendChild(postImage);
 
-// let accumulator = new Accumulator(1);
+    return postsDiv;
+  })
 
-// accumulator.read();
-// accumulator.read();
+  return posts_data;
+}
 
-// alert(accumulator.value);
-
-// function h(x) {
-//     return x + 1;
-// }
-// // g(x) = x^2
-// // number -> number
-// function g(x) {
-//     return x * x;
-// }
-// // f(x) = convert x to string
-// // number -> string
-// function f(x) {
-//     return x.toString();
-// }
-
-
-// console.log(f(g(h(1))));
-
-// function dot(vector1, vector2) {
-//     return vector1.reduce((sum, element, index) => sum += element * vector2[index], 0);
-// }
-// const v1 = [1, 3, -5];
-// const v2 = [4, -2, -1];
-
-// console.log(dot(v1, v2));
-
-// function curriedDot(vector1) {
-//     return function (vector2) {
-//         return vector1.reduce((sum, element, index) => sum += element * vector2[index], 0);
-//     }
-// }
-// // Taking the dot product of any vector with [1, 1, 1]
-// // is equivalent to summing up the elements of the other vector.
-// const sumElements = curriedDot([1, 1, 1]);
-
-// console.log(sumElements([1, 3, -5])); // -1
-// console.log(sumElements([4, -2, -1])); // 1
-
-
-const giveMe3 = R.curry(function (item1, item2, item3) {
-    return `
-      1: ${item1}
-      2: ${item2}
-      3: ${item3}
-    `;
-});
-const giveMe2 = giveMe3(R.__, R.__, 'French Hens');   // Specify the third argument.
-const giveMe1 = giveMe2('Partridge in a Pear Tree');  // This will go in the first slot.
-const result = giveMe1('Turtle Doves');               // Finally fill in the second argument.
-console.log(result);
+getPosts();
