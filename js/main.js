@@ -16,7 +16,7 @@ async function getPosts(page = 1) {
   const posts_response = await fetch(`${URI}` + '/wp-json/wp/v2/posts' + `?per_page=${PER_PAGE}` + `&page=${page}`); // http://imtles.noodless.co.ua/wp-json/wp/v2/posts?per_page=2&page=1
   const posts_data = await posts_response.json();
 
-
+  console.log(posts_data);
   async function getImage(id) {
 
 
@@ -71,3 +71,16 @@ async function getPosts(page = 1) {
 }
 
 getPosts();
+
+async function getPost(id) {
+  
+  const container = document.getElementById('container');
+  // container.innerHTML = '';
+
+  const post_response = await fetch(`${URI}` + '/wp-json/wp/v2/posts/' + `${id}`); // http://imtles.noodless.co.ua/wp-json/wp/v2/posts/10
+  const post_data = await post_response.json();
+
+  console.log(post_data);
+}
+
+getPost(10)
